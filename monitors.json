@@ -1,11 +1,11 @@
 [
   {
-    "url_monitor": "https://api.datadoghq.com/api/v1/monitor/12345",
+    "url_monitor": "12345",
     "nome_monitor": "Serviço de Autenticação",
     "descricao_monitor": "Responsável por login e autenticação de usuários."
   },
   {
-    "url_monitor": "https://api.datadoghq.com/api/v1/monitor/67890",
+    "url_monitor": "67890",
     "nome_monitor": "Banco de Dados",
     "descricao_monitor": "Monitora a disponibilidade do banco de dados principal."
   }
