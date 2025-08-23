@@ -2,11 +2,11 @@
   {
     "url_monitor": "3396700",
     "nome_monitor": "ec2 cpu",
-    "descricao_monitor": "ec2 cpu"
+    "descricao_monitor": "ec2 cpu alert"
   },
   {
     "url_monitor": "14068298",
-    "nome_monitor": "Banco de Dados",
-    "descricao_monitor": "ec2 memo"
+    "nome_monitor": "ec2 memory",
+    "descricao_monitor": "ec2 memory alert"
   }
 ]
