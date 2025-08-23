@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Status do Sistema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fonte moderna e clean -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilo minimalista -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: #2e2e2e;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .monitor {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .monitor-info {
+            flex: 1;
+        }
+
+        .monitor-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .monitor-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .monitor-status {
+            font-size: 0.95rem;
+            font-weight: bold;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        .ok { background-color: #d4edda; color: #155724; }
+        .alert { background-color: #f8d7da; color: #721c24; }
+        .warn { background-color: #fff3cd; color: #856404; }
+        .no-data { background-color: #e2e3e5; color: #383d41; }
+        .skipped { background-color: #e2e3e5; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <h1>Status dos Serviços</h1>
+
+    {% for monitor in monitores %}
+    <div class="monitor">
+        <div class="monitor-info">
+            <div class="monitor-title">{{ monitor.nome_monitor }}</div>
+            <div class="monitor-desc">{{ monitor.descricao_monitor }}</div>
+        </div>
+        <div class="monitor-status {{ monitor.estado | lower }}">
+            {{ monitor.estado }}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
