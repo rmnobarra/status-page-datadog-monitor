@@ -1,9 +1,29 @@
 version: '3.8'
 
 services:
-  status-page:
+  backend:
     build: .
+    container_name: status-page-backend
     ports:
       - "8000:8000"
     env_file:
       - .env
+    volumes:
+      - ./monitors.json:/app/monitors.json:ro
+      - ./incidents.json:/app/incidents.json:ro
+    networks:
+      - status-network
+
+  frontend:
+    build: ./frontend
+    container_name: status-page-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - status-network
+
+networks:
+  status-network:
+    driver: bridge

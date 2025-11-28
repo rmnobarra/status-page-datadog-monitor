@@ -1,0 +1,59 @@
+[
+  {
+    "id": "INC-2025-001",
+    "title": "Database Performance Degradation",
+    "status": "resolved",
+    "severity": "major",
+    "created_at": "2025-11-20T14:30:00",
+    "resolved_at": "2025-11-20T16:45:00",
+    "affected_services": ["Database"],
+    "updates": [
+      {
+        "timestamp": "2025-11-20T14:30:00",
+        "status": "investigating",
+        "message": "We are investigating reports of slow database queries affecting multiple services."
+      },
+      {
+        "timestamp": "2025-11-20T15:15:00",
+        "status": "identified",
+        "message": "Issue identified: High memory usage on primary database server due to inefficient query patterns. Team is working on optimization."
+      },
+      {
+        "timestamp": "2025-11-20T16:00:00",
+        "status": "monitoring",
+        "message": "Query optimizations have been deployed. Monitoring database performance closely."
+      },
+      {
+        "timestamp": "2025-11-20T16:45:00",
+        "status": "resolved",
+        "message": "Database performance has returned to normal levels. All services are operating normally."
+      }
+    ]
+  },
+  {
+    "id": "INC-2025-002",
+    "title": "Authentication Service Intermittent Failures",
+    "status": "monitoring",
+    "severity": "minor",
+    "created_at": "2025-11-28T09:00:00",
+    "resolved_at": null,
+    "affected_services": ["Authentication Service"],
+    "updates": [
+      {
+        "timestamp": "2025-11-28T09:00:00",
+        "status": "investigating",
+        "message": "We are aware of intermittent authentication failures affecting a small subset of users."
+      },
+      {
+        "timestamp": "2025-11-28T09:30:00",
+        "status": "identified",
+        "message": "Root cause identified as rate limiting configuration issue. Deploying fix."
+      },
+      {
+        "timestamp": "2025-11-28T10:15:00",
+        "status": "monitoring",
+        "message": "Fix has been deployed. Monitoring authentication success rates closely."
+      }
+    ]
+  }
+]

@@ -75,3 +75,8 @@ Thumbs.db
 
 # Project-specific
 monitors copy.json
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env

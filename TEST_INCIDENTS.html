@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Incidents API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .incident {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+        .incident h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .update {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #0066cc;
+            font-size: 14px;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Incident Timeline Test</h1>
+        <p>This page tests the incidents API and displays the data.</p>
+
+        <div>
+            <button onclick="testAPI()">🔄 Test API</button>
+            <button onclick="openFrontend()">🌐 Open Main Frontend</button>
+            <button onclick="openDocs()">📚 Open API Docs</button>
+        </div>
+
+        <div id="status"></div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+
+            statusDiv.innerHTML = '<div class="status">Testing API endpoints...</div>';
+            resultsDiv.innerHTML = '';
+
+            try {
+                // Test /api/incidents
+                console.log('Fetching incidents from /api/incidents');
+                const incidentsRes = await fetch('http://localhost:8000/api/incidents');
+
+                if (!incidentsRes.ok) {
+                    throw new Error(`HTTP ${incidentsRes.status}: ${incidentsRes.statusText}`);
+                }
+
+                const incidentsData = await incidentsRes.json();
+                console.log('Incidents data:', incidentsData);
+
+                const incidents = incidentsData.incidents || [];
+
+                statusDiv.innerHTML = `<div class="status success">✅ API Working! Found ${incidents.length} incidents</div>`;
+
+                if (incidents.length === 0) {
+                    resultsDiv.innerHTML = '<p><strong>No incidents found in the last 30 days.</strong></p>';
+                } else {
+                    let html = '<h2>Incidents Retrieved:</h2>';
+
+                    incidents.forEach(incident => {
+                        html += `
+                            <div class="incident">
+                                <h3>${incident.title}</h3>
+                                <p><strong>ID:</strong> ${incident.id}</p>
+                                <p><strong>Status:</strong> ${incident.status}</p>
+                                <p><strong>Severity:</strong> ${incident.severity}</p>
+                                <p><strong>Affected Services:</strong> ${incident.affected_services.join(', ')}</p>
+                                <p><strong>Created:</strong> ${incident.created_at}</p>
+                                ${incident.resolved_at ? `<p><strong>Resolved:</strong> ${incident.resolved_at}</p>` : '<p><strong>Status:</strong> Ongoing</p>'}
+
+                                <h4>Updates:</h4>
+                        `;
+
+                        incident.updates.forEach(update => {
+                            html += `
+                                <div class="update">
+                                    <strong>${update.timestamp}</strong> - ${update.status.toUpperCase()}<br>
+                                    ${update.message}
+                                </div>
+                            `;
+                        });
+
+                        html += '</div>';
+                    });
+
+                    resultsDiv.innerHTML = html;
+                }
+
+                // Also show raw JSON
+                resultsDiv.innerHTML += '<h2>Raw JSON Response:</h2><pre>' +
+                    JSON.stringify(incidentsData, null, 2) + '</pre>';
+
+            } catch (error) {
+                console.error('Error:', error);
+                statusDiv.innerHTML = `<div class="status error">❌ Error: ${error.message}</div>`;
+                resultsDiv.innerHTML = `<p>Check the console for more details.</p>`;
+            }
+        }
+
+        function openFrontend() {
+            window.open('http://localhost', '_blank');
+        }
+
+        function openDocs() {
+            window.open('http://localhost:8000/docs', '_blank');
+        }
+
+        // Auto-run on page load
+        window.addEventListener('load', () => {
+            console.log('Page loaded. Testing API...');
+            testAPI();
+        });
+    </script>
+</body>
+</html>
