@@ -9,8 +9,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./monitors.json:/app/monitors.json:ro
-      - ./incidents.json:/app/incidents.json:ro
+      - ./monitors.json:/app/monitors.json
+      - ./incidents.json:/app/incidents.json
     networks:
       - status-network
 

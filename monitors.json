@@ -8,5 +8,10 @@
     "url_monitor": "67890",
     "nome_monitor": "Banco de Dados",
     "descricao_monitor": "Monitora a disponibilidade do banco de dados principal."
+  },
+  {
+    "url_monitor": "999888",
+    "nome_monitor": "Test API Monitor",
+    "descricao_monitor": "Testing CRUD"
   }
 ]
