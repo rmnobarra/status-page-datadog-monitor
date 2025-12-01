@@ -373,6 +373,11 @@ The new interface features:
 - Responsive layout for mobile and desktop
 - Auto-refresh functionality
 
+#### Demo Video
+Watch the new frontend in action:
+
+https://github.com/rmnobarra/status-page-datadog-monitor/assets/screen_demo.mp4
+
 ---
 
 ## Troubleshooting
