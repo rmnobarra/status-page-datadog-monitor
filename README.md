@@ -365,6 +365,10 @@ Watch the new frontend in action:
 
 https://github.com/user-attachments/assets/screen_demo.mp4
 
+
+https://github.com/user-attachments/assets/c313f706-3371-4697-bf1c-f4d4190e1901
+
+
 <video src="https://github.com/user-attachments/assets/screen_demo.mp4" controls></video>
 
 > **Note:** If the video doesn't display, you can view it directly in the [assets folder](./assets/screen_demo.mp4)
