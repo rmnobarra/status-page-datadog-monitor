@@ -360,23 +360,14 @@ npx shadcn-ui@latest add alert
 
 ---
 
-## Screenshots
-
-### Legacy Interface
-![Status Page Screenshot](assets/screenshot.png)
-
-### New React Interface
-The new interface features:
-- Clean, modern design with shadcn/ui
-- Real-time status indicators with icons
-- Expandable incident timeline with detailed updates
-- Responsive layout for mobile and desktop
-- Auto-refresh functionality
-
 #### Demo Video
 Watch the new frontend in action:
 
-https://github.com/rmnobarra/status-page-datadog-monitor/assets/screen_demo.mp4
+https://github.com/user-attachments/assets/screen_demo.mp4
+
+<video src="https://github.com/user-attachments/assets/screen_demo.mp4" controls></video>
+
+> **Note:** If the video doesn't display, you can view it directly in the [assets folder](./assets/screen_demo.mp4)
 
 ---
 
